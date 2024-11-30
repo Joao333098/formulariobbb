@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Blox Universe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #4CAF50, #2C6B2F);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .question {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .question.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .logo {
+            width: 150px; 
+            margin-bottom: 20px;
+            animation: fadeInLogo 1.5s ease-out;
+        }
+
+        @keyframes fadeInLogo {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 30px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        p {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        label {
+            font-weight: 600;
+            margin-top: 15px;
+            display: block;
+            color: #333;
+            font-size: 14px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            font-size: 16px;
+            color: #333;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #4CAF50;
+            background-color: #fff;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .footer {
+            margin-top: 30px;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            margin-bottom: 5px; /* Diminuir o espaçamento */
+            cursor: pointer;
+        }
+
+        .checkbox-group input {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-group input:checked {
+            background-color: #4CAF50;
+            border-color: #4CAF50;
+        }
+
+        .checkbox-group label:hover {
+            color: #4CAF50;
+        }
+
+        .checkbox-group input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="MagicEraser_241130_095727.png" alt="Logo" class="logo">
+        <h1>Formulário Blox Universe</h1>
+        <p>Preencha o formulário abaixo para se candidatar à vaga de colaborador:</p>
+
+        <form id="formulario">
+            <!-- Pergunta 1 -->
+            <div class="question active" id="q1">
+                <label for="idade">1. Qual a sua idade?</label>
+                <input type="number" id="idade" name="idade" placeholder="Digite sua idade" required inputmode="numeric">
+            </div>
+
+            <!-- Pergunta 2 -->
+            <div class="question" id="q2">
+                <label for="nome">2. Qual o seu nome?</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+            </div>
+
+            <!-- Pergunta adicional para o Nick no Discord -->
+            <div class="question" id="q2-nick">
+                <label for="nick">Qual seu Nick no Discord?</label>
+                <input type="text" id="nick" name="nick" placeholder="Digite seu Nick no Discord" required>
+            </div>
+
+            <!-- Pergunta adicional para o ID no Discord -->
+            <div class="question" id="q2-id">
+                <label for="id-discord">Qual seu ID no Discord?</label>
+                <input type="text" id="id-discord" name="id-discord" placeholder="Digite seu ID no Discord" required>
+            </div>
+
+            <!-- Pergunta 3 (com campo de data) -->
+            <div class="question" id="q3">
+                <label for="tempo-servidor">3. Há quanto tempo você está no servidor?</label>
+                <input type="date" id="tempo-servidor" name="tempo-servidor" required>
+            </div>
+
+            <!-- Pergunta 4 -->
+            <div class="question" id="q4">
+                <label for="ajuda">4. Como você pode ajudar o servidor a melhorar?</label>
+                <textarea id="ajuda" name="ajuda" placeholder="Conte de forma objetiva" required></textarea>
+            </div>
+
+            <!-- Pergunta 5 -->
+            <div class="question" id="q5">
+                <label for="diferente">5. O que te diferencia dos outros candidatos?</label>
+                <textarea id="diferente" name="diferente" placeholder="Explique suas qualidades" required></textarea>
+            </div>
+
+            <!-- Pergunta 6 com checkbox estilizado -->
+            <div class="question" id="q6">
+                <label>6. Qual parte do dia você fica mais ativo(a)? (Selecione todas as opções que se aplicam)</label>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="ativo" value="manha"> Manhã</label>
+                    <label><input type="checkbox" name="ativo" value="tarde"> Tarde</label>
+                    <label><input type="checkbox" name="ativo" value="noite"> Noite</label>
+                    <label><input type="checkbox" name="ativo" value="madrugada"> Madrugada</label>
+                </div>
+            </div>
+
+            <!-- Pergunta 7 -->
+            <div class="question" id="q7">
+                <label for="experiencia">7. Já participou da equipe de outros servidores? Se sim, você possui experiência em quê?</label>
+                <textarea id="experiencia" name="experiencia" placeholder="Explique sua experiência" required></textarea>
+            </div>
+
+            <!-- Pergunta 8 -->
+            <div class="question" id="q8">
+                <label for="defeitos">8. 5 defeitos e 5 qualidades suas:</label>
+                <textarea id="defeitos" name="defeitos" placeholder="Escreva aqui seus defeitos e qualidades" required></textarea>
+            </div>
+
+            <div id="buttons">
+                <button type="button" id="nextBtn">Próxima</button>
+                <button type="button" id="prevBtn" style="display: none;">Anterior</button>
+                <button type="submit" style="display: none;">Enviar</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        let currentQuestion = 0;
+        const questions = document.querySelectorAll('.question');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const submitBtn = document.querySelector('button[type="submit"]');
+        const form = document.getElementById('formulario');
+
+        nextBtn.addEventListener('click', () => {
+            if (validateForm()) {
+                changeQuestion(1);
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            changeQuestion(-1);
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitForm();
+        });
+
+        function changeQuestion(direction) {
+            questions[currentQuestion].classList.remove('active');
+            currentQuestion += direction;
+            questions[currentQuestion].classList.add('active');
+            updateButtons();
+        }
+
+        function updateButtons() {
+            prevBtn.style.display = currentQuestion > 0 ? 'inline-block' : 'none';
+            nextBtn.style.display = currentQuestion < questions.length - 1 ? 'inline-block' : 'none';
+            submitBtn.style.display = currentQuestion === questions.length - 1 ? 'inline-block' : 'none';
+        }
+
+        function validateForm() {
+            const activeQuestion = questions[currentQuestion];
+            const inputs = activeQuestion.querySelectorAll('input, textarea');
+            let valid = true;
+
+            inputs.forEach(input => {
+                if (!input.value) {
+                    valid = false;
+                    input.style.borderColor = 'red';
+                } else {
+                    input.style.borderColor = '#ccc';
+                }
+            });
+            return valid;
+        }
+
+        function submitForm() {
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            const jsonString = JSON.stringify(data, null, 2);
+            const blob = new Blob([jsonString], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'resposta.txt';
+            link.click();
+        }
+    </script>
+</body>
+</html>
